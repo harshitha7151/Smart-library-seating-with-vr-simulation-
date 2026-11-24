@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>SeatSpace Virtual Library</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background: #111820; }
+      * { box-sizing: border-box; }
+      html, body, #unity-container { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+      #unity-container { position: relative; display: grid; place-items: center; background: #111820; }
+      #unity-canvas { width: 100%; height: 100%; background: #111820; outline: none; }
+      #unity-loading, #unity-error { position: absolute; inset: 0; display: grid; place-content: center; gap: 14px; padding: 24px; text-align: center; background: #111820e8; }
+      #unity-loading[hidden], #unity-error[hidden] { display: none; }
+      #unity-progress-track { width: min(420px, 70vw); height: 8px; overflow: hidden; border-radius: 999px; background: #ffffff24; }
+      #unity-progress { width: 0; height: 100%; background: #38bdf8; transition: width 120ms ease; }
+      #unity-warning { position: absolute; top: 12px; left: 12px; right: 12px; z-index: 3; display: grid; gap: 6px; }
+      #unity-warning:empty { display: none; }
+      #unity-warning div { padding: 10px 12px; border-radius: 8px; color: #111827; background: #fde68a; box-shadow: 0 8px 24px #0006; }
+      #unity-fullscreen { position: absolute; right: 14px; bottom: 14px; z-index: 2; border: 1px solid #ffffff4d; border-radius: 8px; padding: 8px 11px; color: white; background: #111827cc; cursor: pointer; }
+      #unity-error { z-index: 4; color: #fee2e2; background: #290d12f2; }
+      #unity-error strong { font-size: 20px; }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
+      <div id="unity-loading" role="status">
+        <strong>Loading SeatSpace Virtual Library</strong>
+        <div id="unity-progress-track"><div id="unity-progress"></div></div>
+      </div>
+      <div id="unity-warning" aria-live="polite"></div>
+      <button id="unity-fullscreen" type="button" hidden>Fullscreen</button>
+      <div id="unity-error" role="alert" hidden>
+        <strong>Unity could not start</strong>
+        <span id="unity-error-message"></span>
+      </div>
+    </div>
+    <script>
+      const parentMessage = (type, detail = {}) => window.parent.postMessage({ source: "seatspace-unity", type, ...detail }, window.location.origin);
+      const canvas = document.querySelector("#unity-canvas");
+      const loading = document.querySelector("#unity-loading");
+      const progress = document.querySelector("#unity-progress");
+      const warning = document.querySelector("#unity-warning");
+      const errorPanel = document.querySelector("#unity-error");
+      const errorMessage = document.querySelector("#unity-error-message");
+      const fullscreen = document.querySelector("#unity-fullscreen");
+      let failed = false;
+
+      const fail = (value) => {
+        if (failed) return;
+        failed = true;
+        const message = value instanceof Error ? value.message : String(value || "Unknown Unity error.");
+        loading.hidden = true;
+        errorMessage.textContent = message;
+        errorPanel.hidden = false;
+        parentMessage("error", { message });
+      };
+
+      const showBanner = (message, type) => {
+        const item = document.createElement("div");
+        item.textContent = message;
+        if (type === "error") item.style.background = "#fecaca";
+        warning.appendChild(item);
+        if (type === "error") fail(message);
+        else window.setTimeout(() => item.remove(), 5000);
+      };
+
+      window.addEventListener("error", (event) => fail(event.error || event.message));
+      window.addEventListener("unhandledrejection", (event) => fail(event.reason));
+
+      const config = {
+        arguments: [],
+        dataUrl: "/unity/Build/unity.data.br",
+        frameworkUrl: "/unity/Build/unity.framework.js.br",
+        codeUrl: "/unity/Build/unity.wasm.br",
+        streamingAssetsUrl: "/unity/StreamingAssets",
+        companyName: "SeatSpace",
+        productName: "SeatSpaceVirtualLibrary",
+        productVersion: "0.1.0",
+        showBanner,
+      };
+
+      const loader = document.createElement("script");
+      loader.src = "/unity/Build/unity.loader.js";
+      loader.onerror = () => fail("The Unity loader script could not be downloaded.");
+      loader.onload = () => {
+        createUnityInstance(canvas, config, (value) => {
+          progress.style.width = `${Math.round(value * 100)}%`;
+          parentMessage("progress", { value });
+        }).then((instance) => {
+          loading.hidden = true;
+          fullscreen.hidden = false;
+          fullscreen.addEventListener("click", () => instance.SetFullscreen(1));
+          parentMessage("ready");
+          canvas.focus();
+        }).catch(fail);
+      };
+      document.body.appendChild(loader);
+    </script>
+  </body>
+</html>

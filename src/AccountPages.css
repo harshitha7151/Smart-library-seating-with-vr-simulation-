@@ -1,0 +1,31 @@
+.account-page { min-height: 100vh; padding: 24px; background: #f8f7f1; color: #18372e; }
+.account-header { max-width: 900px; margin: 0 auto 20px; display: flex; justify-content: space-between; align-items: center; color: #63766d; font-size: 14px; }
+.account-card { max-width: 900px; margin: 0 auto; padding: clamp(22px, 5vw, 42px); background: #fffefa; border: 1px solid #e3e5d9; border-radius: 16px; box-shadow: 0 14px 36px #18372e0c; }
+.account-card h1 { margin: 0 0 10px; color: #19483a; font-size: clamp(26px, 5vw, 36px); letter-spacing: -0.7px; }
+.account-card h2 { margin: 26px 0 12px; color: #19483a; font-size: 19px; }
+.account-intro { margin: 0 0 22px; color: #63766d; font-size: 14px; line-height: 1.6; }
+.account-form { display: grid; gap: 16px; margin: 20px 0; }
+.account-form label { display: grid; gap: 7px; color: #344b40; font-size: 14px; font-weight: 650; }
+.account-form input, .account-form select { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #ccd7cd; border-radius: 9px; color: #18372e; background: white; font: inherit; }
+.account-form input:focus, .account-form select:focus { border-color: #c6a45e; outline: 3px solid #c6a45e33; }
+.account-primary, .account-secondary, .account-link { min-height: 42px; padding: 9px 14px; border: 0; border-radius: 9px; font: inherit; font-weight: 700; cursor: pointer; }
+.account-primary { background: #19483a; color: white; }
+.account-primary:disabled { opacity: .6; cursor: wait; }
+.account-secondary { background: #eef2f8; color: #344158; }
+.account-link { padding-inline: 0; color: #19483a; background: transparent; }
+.account-success, .account-error { padding: 10px 12px; border-radius: 8px; font-size: 14px; line-height: 1.5; }
+.account-success { color: #1b5c3a; background: #e7f0e5; }
+.account-error { color: #922f2f; background: #f9e9e4; }
+.account-list { display: grid; gap: 10px; }
+.account-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px; border: 1px solid #e3e5d9; border-radius: 12px; background: #fffefa; }
+.account-row > div:first-child { display: grid; gap: 4px; min-width: 0; }
+.account-row strong { color: #19483a; }
+.account-row span, .account-row small { color: #63766d; font-size: 13px; overflow-wrap: anywhere; }
+.account-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 560px) {
+  .account-page { padding: 12px; }
+  .account-header { margin-bottom: 12px; }
+  .account-row { align-items: flex-start; flex-direction: column; }
+  .account-actions { width: 100%; }
+  .account-actions button { flex: 1; }
+}

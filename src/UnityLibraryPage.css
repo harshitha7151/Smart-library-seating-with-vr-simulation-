@@ -1,0 +1,19 @@
+.unity-page{min-height:100vh;background:#f5f3ed;color:#1f2937;padding:20px clamp(16px,4vw,56px) 40px}
+.unity-page-header{display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid #d9d8d2;padding:0 0 16px}
+.unity-brand{background:none;border:0;color:#1737b5;font-size:22px;font-weight:800;cursor:pointer}
+.unity-page-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.unity-page-actions button{background:#fff;border:1px solid #d7dbe3;border-radius:9px;padding:9px 13px;color:#26324a;cursor:pointer}
+.unity-page-intro{max-width:800px;margin:32px auto 20px}
+.unity-page-intro h1{font-size:clamp(30px,4vw,44px);margin:5px 0 10px;color:#142b72}
+.unity-page-intro p:last-child{color:#586477;line-height:1.6}
+.unity-player-shell{position:relative;overflow:hidden;border-radius:14px;background:#15191f;box-shadow:0 16px 44px #17203326}
+.unity-player-frame{display:block;width:100%;height:min(76vh,850px);min-height:500px;border:0;background:#15191f}
+.unity-player-status{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:12px;padding:24px;color:#e5edf8;text-align:center;background:#111820e8}
+.unity-player-status p{margin:0;max-width:560px;line-height:1.5}
+.unity-spinner{width:36px;height:36px;border:3px solid #ffffff2e;border-top-color:#38bdf8;border-radius:50%;animation:unity-spin .8s linear infinite}
+@keyframes unity-spin{to{transform:rotate(360deg)}}
+.unity-build-message{max-width:800px;margin:28px auto;padding:26px;border:1px solid #d4d9e2;border-radius:14px;background:#fff;box-shadow:0 12px 34px #17203314;line-height:1.65}
+.unity-build-message h2{margin:0 0 10px;color:#142b72}
+.unity-primary{border:0;border-radius:9px;background:#2148c0;color:#fff;font-weight:700;padding:12px 17px;cursor:pointer}
+.unity-fallback-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.unity-fallback-actions button:not(.unity-primary){border:1px solid #cfd6e2;border-radius:9px;background:#fff;color:#26324a;padding:12px 17px;cursor:pointer}
+@media(max-width:700px){.unity-page-header{align-items:flex-start;flex-direction:column}.unity-page-actions{justify-content:flex-start}.unity-player-frame{height:70vh;min-height:380px}}

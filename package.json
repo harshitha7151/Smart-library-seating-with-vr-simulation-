@@ -1,0 +1,44 @@
+{
+  "name": "smart-library-seating",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint src server scripts vite.config.js",
+    "preview": "vite preview",
+    "test": "node --test scripts/export-unity-layout.test.js server/lifecycle.test.js server/validation.test.js src/scene3DData.test.js",
+    "server": "node server/index.js",
+    "db:migrate": "node server/migrate.js",
+    "db:migrate:analysis": "node server/migrate.js --only 005_database_analysis_views.sql",
+    "db:migrate:usn": "node server/migrate.js --only 006_add_student_usn.sql",
+    "db:seed": "node server/seed.js",
+    "unity:export-layout": "node scripts/export-unity-layout.js"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.2",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.8.0",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.186.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.89.0",
+    "vite": "^8.3.5"
+  }
+}

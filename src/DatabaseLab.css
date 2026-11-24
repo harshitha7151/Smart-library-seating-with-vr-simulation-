@@ -1,0 +1,20 @@
+.db-lab { min-height: 100vh; padding: 28px clamp(16px, 5vw, 72px) 56px; background: #f6f6f0; color: #18372e; }
+.db-lab-header { display: flex; gap: 28px; align-items: flex-start; max-width: 1320px; margin: 0 auto 26px; }
+.db-lab-header > button, .db-lab-card-head button, .db-lab-nav button { border: 1px solid #cad8cf; border-radius: 8px; background: #fff; color: #19483a; padding: 10px 14px; font-weight: 700; cursor: pointer; }
+.db-lab-header h1 { margin: 6px 0; font-size: clamp(30px, 4vw, 44px); }
+.db-lab-header p:last-child { color: #63766d; }
+.db-lab-nav { display: flex; flex-wrap: wrap; gap: 8px; max-width: 1320px; margin: auto auto 16px; }
+.db-lab-nav button[aria-pressed="true"] { color: white; background: #19483a; }
+.db-lab-card { max-width: 1320px; margin: auto; padding: clamp(18px, 3vw, 30px); border: 1px solid #e0e4da; border-radius: 14px; background: white; }
+.db-lab-card-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.db-lab-card-head h2 { margin: 0; }
+.db-lab-card-head div { display: flex; gap: 8px; }
+.db-lab-card pre { overflow: auto; max-height: 560px; padding: 16px; border-radius: 8px; background: #17251f; color: #dcf1e1; font: 12px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; }
+.db-lab-tables { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.db-lab-tables article { padding: 14px; border: 1px solid #e1e6dd; border-radius: 9px; }
+.db-lab-tables h3 { margin: 0 0 8px; color: #19483a; }
+.db-lab-tables ul { margin: 0; padding-left: 18px; color: #63766d; font-size: 12px; line-height: 1.7; }
+.db-lab-tables code { color: #173c31; }
+.db-lab-error { padding: 12px; background: #fff0ed; color: #8d2c1e; border-radius: 8px; }
+.db-lab-footnote { max-width: 1320px; margin: 16px auto; color: #63766d; font-size: 13px; }
+@media (max-width: 700px) { .db-lab-header { flex-direction: column; gap: 14px; } .db-lab-card-head { align-items: flex-start; flex-direction: column; } .db-lab-nav button { flex: 1 1 150px; } }

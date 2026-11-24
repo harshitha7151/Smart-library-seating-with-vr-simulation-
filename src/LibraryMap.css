@@ -1,0 +1,221 @@
+/* LibraryMap.css — full rewrite for mobile-first layout */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+.lm-page {
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  background: #f4f7fc;
+  font-family: Arial, sans-serif;
+  color: #172033;
+}
+
+/* ── Header ── */
+.lm-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.lm-tagline {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #285bd4;
+  margin: 0 0 4px;
+}
+
+.lm-title {
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: 800;
+  margin: 0;
+  color: #172033;
+}
+
+.lm-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stat-chip {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.stat-chip.available { background: #dcfce7; color: #15803d; }
+.stat-chip.booked    { background: #fee2e2; color: #b91c1c; }
+.stat-chip.total     { background: #e0e7ff; color: #3730a3; }
+
+/* ── Floor switcher ── */
+.lm-floor-switcher {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.lm-floor-btn {
+  padding: 10px 22px;
+  border: 2px solid #dbe4f5;
+  border-radius: 12px;
+  background: white;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  min-height: 44px; /* accessible tap target */
+}
+.lm-floor-btn:hover  { border-color: #285bd4; color: #285bd4; }
+.lm-floor-btn.active { background: #285bd4; color: white; border-color: #285bd4; }
+
+/* ── Legend ── */
+.lm-legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #475569;
+}
+.lm-legend span { display: flex; align-items: center; gap: 6px; }
+.legend-dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+.legend-dot.av { background: #22c55e; }
+.legend-dot.bk { background: #ef4444; }
+.legend-dot.sl { background: #3b82f6; }
+
+/* ── Content row (map + panel) ── */
+.lm-content {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+/* ── Map wrapper ── */
+.lm-map-wrapper {
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+}
+
+/* ── Zoom controls ── */
+.lm-zoom-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lm-zoom-controls button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #dbe4f5;
+  border-radius: 9px;
+  background: white;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.lm-zoom-controls button:hover { background: #edf2ff; }
+
+/* ── Map viewport (the clipping box) ── */
+.lm-map-viewport {
+  width: 100%;
+  min-height: 380px;
+  max-height: 70vh;
+  overflow: hidden;
+  border: 2px solid #d6c6a7;
+  border-radius: 16px;
+  background: #c8d8e8;
+  cursor: grab;
+  position: relative;
+}
+.lm-map-viewport:active { cursor: grabbing; }
+
+/* ── Inner scaled/panned div ── */
+.lm-map-inner {
+  will-change: transform;
+  width: 100%;
+}
+
+/* ── Hint below map ── */
+.lm-hint {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+/* ── Seat panel column ── */
+.lm-panel-column {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.lm-no-selection {
+  background: white;
+  border: 1px dashed #dbe4f5;
+  border-radius: 16px;
+  padding: 28px 18px;
+  text-align: center;
+  color: #64748b;
+}
+.lm-no-selection span { font-size: 28px; display: block; margin-bottom: 10px; }
+.lm-no-selection p { margin: 0; font-size: 14px; line-height: 1.6; }
+
+/* ── Disclaimer ── */
+.lm-disclaimer {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Mobile layout (≤ 720px) — stack panel below map
+════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  .lm-page { padding: 16px 12px 32px; }
+
+  .lm-content {
+    flex-direction: column;
+  }
+
+  .lm-panel-column {
+    width: 100%;
+  }
+
+  .lm-map-viewport {
+    min-height: 300px;
+    max-height: 55vh;
+  }
+
+  .lm-floor-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .lm-stats { justify-content: flex-start; }
+}
+
+@media (max-width: 420px) {
+  .lm-legend { gap: 12px; font-size: 12px; }
+  .lm-zoom-controls button { width: 34px; height: 34px; font-size: 16px; }
+}

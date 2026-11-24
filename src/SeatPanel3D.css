@@ -1,0 +1,117 @@
+/* SeatPanel3D.css */
+
+.sp3d {
+  background: white;
+  border: 1px solid #dce5f5;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(23,32,83,0.10);
+  padding: 18px;
+  font-family: Arial, sans-serif;
+}
+
+.sp3d-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.sp3d-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #285bd4;
+  background: #edf2ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.sp3d-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #888;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.sp3d-close:hover { background: #f5f5f5; color: #333; }
+
+.sp3d-body { margin-bottom: 14px; }
+
+.sp3d-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.sp3d-row:last-child { border-bottom: none; }
+
+.sp3d-label {
+  font-size: 11px;
+  color: #8a8a8a;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sp3d-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #172033;
+}
+
+.sp3d-value.st-available { color: #25864f; }
+.sp3d-value.st-booked    { color: #9b7b19; }
+.sp3d-value.st-occupied  { color: #bd3939; }
+.sp3d-value.st-selected  { color: #2563eb; }
+.sp3d-value.st-unavailable { color: #64748b; }
+.sp3d-booking-form { display: grid; gap: 10px; margin: 14px 0; }
+.sp3d-booking-form label { display: grid; gap: 5px; color: #526078; font-size: 12px; font-weight: 700; }
+.sp3d-booking-form input { width: 100%; min-height: 40px; padding: 8px; border: 1px solid #dce5f5; border-radius: 8px; color: #172033; font: inherit; }
+.sp3d-error { padding: 8px 10px; border-radius: 7px; color: #991b1b; background: #fef2f2; font-size: 12px; line-height: 1.5; }
+.sp3d-success { padding: 10px; border-radius: 8px; background: #f0fdf4; color: #166534; font-size: 13px; line-height: 1.5; }
+.sp3d-feedback { display: grid; gap: 10px; }
+
+.sp3d-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.sp3d-btn-clear, .sp3d-btn-book {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s;
+  min-height: 40px;
+}
+
+.sp3d-btn-clear { background: #f1f5f9; color: #334155; }
+.sp3d-btn-clear:hover { background: #e2e8f0; }
+.sp3d-btn-book  { background: #285bd4; color: white; }
+.sp3d-btn-book:hover { background: #1947b4; }
+.sp3d-btn-book:disabled { opacity: .65; cursor: wait; }
+
+.sp3d-note {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 6px 0 10px;
+  line-height: 1.5;
+}
+
+.sp3d-nav {
+  background: #f0f7ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #1e40af;
+  line-height: 1.5;
+}

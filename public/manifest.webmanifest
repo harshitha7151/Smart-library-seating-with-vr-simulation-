@@ -1,0 +1,17 @@
+{
+  "name": "SeatSpace · RVCE Library Seating",
+  "short_name": "SeatSpace",
+  "description": "Explore and book seating on the RVCE library third floor.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8fc",
+  "theme_color": "#285bd4",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
